@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form>
+        <table>
+            <tr>
+                <td>
+                    First name
+                </td>
+                <td>
+                    <h:inputText id="fname" value="#{users.fname}" required="true" 
+                                 requiredMessage="First name cannot be empty" 
+                                 validatorMessage="This field only allows English alphabets">
+                        <f:validateRegex pattern="[A-Za-z]*"/>
+                    </h:inputText>
+                    <h:message for="fname" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last name
+                </td>
+                <td>
+                    <h:inputText id="lname" value="#{users.lname}" required="true" 
+                                 requiredMessage="Last name cannot be empty" 
+                                 validatorMessage="This field only allows English alphabets">
+                        <f:validateRegex pattern="[A-Za-z]*"/>
+                    </h:inputText>
+                    <h:message for="lname" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    User type
+                </td>
+                <td>
+                    <h:selectOneMenu id="type" value="#{users.type}" validatorMessage="Please choose an option">
+                        <f:selectItem itemValue="NotAOption" itemLabel="----Please Choose----"/>
+                        <f:selectItem itemValue="Admin" itemLabel="Admin"/>
+                        <f:selectItem itemValue="Bank User" itemLabel="User"/>
+                        <f:validator validatorId="TypeValidator"/>
+                    </h:selectOneMenu>
+                    <h:message for="type" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email
+                </td>
+                <td>
+                    <h:inputText id="email" value="#{users.email}" required="true"
+                                 validatorMessage="Please enter a correct email"
+                                 requiredMessage="Email cannot be empty">
+                        <f:validateRegex pattern="[A-Za-z0-9._]+@[A-Za-z0-9.]+.[A-Za-z]+"/>
+                    </h:inputText>
+                    <h:message for="email" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address
+                </td>
+                <td>
+                    <h:inputText id="address" value="#{users.address}" required="true" 
+                                 requiredMessage="Address cannot be empty">
+                    </h:inputText>
+                    <h:message for="address" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone Number
+                </td>
+                <td>
+                    <h:inputText id="phoneNo" value="#{users.phoneNo}" required="true"
+                                 requiredMessage="Phone number cannot be empty"
+                                 validatorMessage="Please enter a correct Australian phone number (start with 04 and 10-digit long)">
+                        <f:validateRegex pattern="04[0-9]{8,8}"/>
+                    </h:inputText>
+                    <h:message for="phoneNo" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password
+                </td>
+                <td>
+                    <h:inputSecret id="password" value="#{users.password}" required="true" requiredMessage="This field cannot be empty" 
+                                 validatorMessage="Password only allows number, alphabet and special characters (!_?.@). Length is 8 to 20." >
+                        <f:validateRegex pattern="[A-Za-z0-9!_/.@]{8,20}"/>
+                    </h:inputSecret>
+                    <h:message for="password" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Confirm Password
+                </td>
+                <td>
+                    <h:inputSecret id="confirmPassword" value="#{users.confirmPassword}" required="true" 
+                                   requiredMessage="Please confirm password"/>
+                    <h:message for="confirmPassword" style="color:red; font-size:12px" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:commandButton value="Create" id="button" action="#{users.createUser()}"/>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+        <h:outputScript rendered="#{!users.samePassword}">
+            alert("Two password not matched.");
+        </h:outputScript>
+        </h:form>
+        <h:form>
+            <h:commandLink value="Back to List" action="userList"></h:commandLink>
+        </h:form>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>FIT5042 Distinction Task</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <table>
+                <tr>
+                    <td align="right">
+                        <table>
+                            <tr>
+                                <td>Transaction No: </td>
+                                <td>
+                                    <h:inputText id="transactionNo" value="#{credit.transactionNo}" binding="#{transactionNo}">
+                                        <f:validator validatorId="TransNoValidator"/>
+                                    </h:inputText>
+                                    <br></br>
+                                    <h:message for="transactionNo" style="color:red; font-size:9px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Transaction Name: </td>
+                                <td>
+                                    <h:inputText id="transactionName" value="#{credit.transactionName}" binding="#{transactionName}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Transaction Type: </td>
+                                <td>
+                                    <h:inputText id="transactionType" value="#{credit.transactionType}"  binding="#{transactionType}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <h:commandButton value="Search" id="button" action="#{credit.search()}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h:dataTable value="#{credit.transactions}" var="item" class="table-1">
+                            <h:column>
+                                <f:facet name="header">Transaction No</f:facet>
+                                    #{item.transactionNo}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Transaction Name</f:facet>
+                                    #{item.transactionName}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Action</f:facet>
+                                <h:commandLink value="View" action="transaction" immediate="true">
+                                    <f:param name="transactionNo" value="#{item.transactionNo}"/>
+                                </h:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </table>
+            
+        </h:form>
+        <h:form>
+            <table>
+                <tr>
+                    <td>
+                        <h:commandLink value="Home page" action="index"></h:commandLink>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>
+

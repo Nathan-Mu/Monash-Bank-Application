@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>#{users.user.uid}</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            
+        <h1>#{users.user.fname} #{users.user.lname}</h1>
+        <table>
+            <tr>
+                <td>User Id</td>
+                <td>#{users.user.uid}</td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>#{users.user.fname}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>#{users.user.lname}</td>
+            </tr>
+            <tr>
+                <td>User Type</td>
+                <td>#{users.user.type}</td>
+            </tr>
+            <tr>
+                <td>Balance</td>
+                <td>#{users.user.balance}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>#{users.user.email}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>#{users.user.address}</td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>#{users.user.phoneNo}</td>
+            </tr>
+        </table>
+        <h:commandLink value="Back to List" action="userList"></h:commandLink>
+        </h:form>
+    </h:body>
+</html>

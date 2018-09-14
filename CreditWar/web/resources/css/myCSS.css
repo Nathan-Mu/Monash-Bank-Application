@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28/09/2017, 11:13:57 AM
+    Author     : nathan
+*/
+
+/* Padding and font style */
+.myTable td, .myTable th {
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+/* Table Head */
+.table-1 thead th {
+    background-color: rgb(81, 130, 187);
+    color: #fff;
+    width: 300px;
+    border-bottom-width: 0;
+}
+
+/* Column Style */
+.table-1 td {
+    color: #000;
+}
+/* Heading and Column Style */
+.table-1 tr, .table-1 th {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(81, 130, 187);
+}
+
+/* Padding and font style */
+.table-1 td, .table-1 th {
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Transfer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form>
+            <table>
+                <tr>
+                    <td>
+                        Transfer from
+                    </td>
+                    <td>
+                        <h:inputText id="transferFrom" value="#{transfer.transferFrom}" required="true"
+                                     requiredMessage="This field cannot be empty"
+                                     validatorMessage="Invalid user id" >
+                            <f:validateRegex pattern="[0-9]*[1-9]+[0-9]*"/>
+                        </h:inputText>
+                        <h:message for="transferFrom" style="color:red; font-size:12px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Transfer to
+                    </td>
+                    <td>
+                        <h:inputText id="transferTo" value="#{transfer.transferTo}" required="true"
+                                     requiredMessage="This field cannot be empty" 
+                                     validatorMessage="Invalid user id" >
+                            <f:validateRegex pattern="[0-9]*[1-9]+[0-9]*"/>
+                        </h:inputText>
+                        <h:message for="transferTo" style="color:red; font-size:12px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Amount
+                    </td>
+                    <td>
+                        <h:inputText id="amount" value="#{transfer.amount}" required="true"
+                                     requiredMessage="This field cannot be empty"
+                                     validatorMessage="Invalid amount" >
+                            <f:validateRegex pattern="[0-9]*[1-9]+[0-9]*[.]{0,1}[0-9]{0,2}"/>
+                        </h:inputText>
+                        <h:message for="amount" style="color:red; font-size:12px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Description
+                    </td>
+                    <td>
+                        <h:inputText id="description" value="#{transfer.description}" />
+                        <h:message for="description" style="color:red; font-size:12px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Transaction Name
+                    </td>
+                    <td>
+                        <h:inputText id="transactionName" value="#{transfer.transactionName}" required="true"
+                                     requiredMessage="This field cannot be empty"/>
+                        <h:message for="transactionName" style="color:red; font-size:12px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h:commandButton value="Transfer" id="button" action="#{transfer.transfer()}"/>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+        <h:form>
+        <h:commandLink value="Home page" action="index"></h:commandLink>
+        <h:outputScript rendered="#{!transfer.validTransferFrom}">
+            alert("Output user not found.");
+        </h:outputScript>
+        <h:outputScript rendered="#{!transfer.validTransferTo}">
+            alert("Input user not found.");
+        </h:outputScript>
+        <h:outputScript rendered="#{!transfer.differentUserId}">
+            alert("Output user and input user should be different.");
+        </h:outputScript>
+        <h:outputScript rendered="#{!transfer.enoughFund}">
+            alert("Not enough fund.");
+        </h:outputScript>
+        </h:form>
+    </body>
+</html>
